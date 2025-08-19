@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girlie Info Form</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffe6f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        .form-container h2 {
+            color: #d63384;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ffb6c1;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #ff66b2;
+            box-shadow: 0 0 5px #ff99cc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff66b2;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff4da6;
+            transform: scale(1.05);
+        }
+
+        /* Success message */
+        #message {
+            margin-top: 15px;
+            color: green;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Girlie Info Form</h2>
+        <form id="girlieForm">
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Pachukky Precious" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="favoriteColor">Favorite Color:</label>
+                <select id="favoriteColor" name="favoriteColor" required>
+                    <option value="">--</option>
+                    <option value="pink">Pink</option>
+                    <option value="purple">Purple</option>
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="hobby">Hobby:</label>
+                <input type="text" id="hobby" name="hobby" placeholder="E.g., dancing, makeup, baking" required>
+            </div>
+            
+            <button type="submit">Submit</button>
+        </form>
+
+        <p id="message">✅ Form submitted successfully!</p>
+    </div>
+
+    <script>
+        const form = document.getElementById('girlieForm');
+        const message = document.getElementById('message');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // prevent real submit
+            message.style.display = 'block'; // show message
+        });
+    </script>
+</body>
+</html>
