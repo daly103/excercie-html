@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login & Sign Up</title>
+<style>
+    body {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        padding: 25px 30px;
+        max-width: 320px;
+        width: 100%;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        color: #333;
+    }
+    h2 {
+        margin-bottom: 20px;
+        color: #6a11cb;
+    }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+        font-size: 14px;
+    }
+    input:focus {
+        border-color: #2575fc;
+        box-shadow: 0 0 5px #6a11cb;
+    }
+    button {
+        background-color: #ff69b4;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 15px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    button:hover {
+        background-color: #ff1493;
+        transform: scale(1.05);
+    }
+    .message {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    .link {
+        margin-top: 15px;
+        font-size: 14px;
+    }
+    .link a {
+        color: #2575fc;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .link a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+
+<div class="container" id="authContainer">
+    <!-- Login Form -->
+    <div id="loginFormDiv">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <label style="display:block; text-align:left; font-size:13px; margin-top:5px;">
+                <input type="checkbox" name="remember"> Remember me
+            </label>
+            <button type="submit">Login</button>
+        </form>
+        <div class="message" id="loginMessage"></div>
+        <div class="link">No account? <a href="#" id="showSignUp">Sign Up</a></div>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div id="signUpFormDiv" style="display:none;">
+        <h2>Sign Up</h2>
+        <form id="signUpForm">
+            <input type="email" id="signUpEmail" placeholder="Email" required>
+            <input type="password" id="signUpPassword" placeholder="Password" required>
+            <input type="password" id="signUpConfirm" placeholder="Confirm Password" required>
+            <button type="submit">Register</button>
+        </form>
+        <div class="message" id="signUpMessage"></div>
+        <div class="link">Already have an account? <a href="#" id="showLogin">Login</a></div>
+    </div>
+</div>
+
+<script>
+    const loginFormDiv = document.getElementById('loginFormDiv');
+    const signUpFormDiv = document.getElementById('signUpFormDiv');
+    const showSignUp = document.getElementById('showSignUp');
+    const showLogin = document.getElementById('showLogin');
+
+    // Toggle forms
+    showSignUp.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginFormDiv.style.display = 'none';
+        signUpFormDiv.style.display = 'block';
+    });
+
+    showLogin.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginFormDiv.style.display = 'block';
+        signUpFormDiv.style.display = 'none';
+    });
+
+    // Login functionality
+    const loginForm = document.getElementById('loginForm');
+    const loginMessage = document.getElementById('loginMessage');
+    loginForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+
+        // Example hardcoded user
+        const correctEmail = "dalyminni34@gmail.com";
+        const correctPassword = "12345";
+
+        if(email === correctEmail && password === correctPassword){
+            loginMessage.style.color = 'green';
+            loginMessage.textContent = "Login Successful!";
+        } else {
+            loginMessage.style.color = 'red';
+            loginMessage.textContent = "Incorrect email or password!";
+        }
+    });
+
+    // Sign Up functionality
+    const signUpForm = document.getElementById('signUpForm');
+    const signUpMessage = document.getElementById('signUpMessage');
+    signUpForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        const email = document.getElementById('signUpEmail').value;
+        const password = document.getElementById('signUpPassword').value;
+        const confirm = document.getElementById('signUpConfirm').value;
+
+        if(password === confirm){
+            signUpMessage.style.color = 'green';
+            signUpMessage.textContent = `Account created for ${email}!`;
+        } else {
+            signUpMessage.style.color = 'red';
+            signUpMessage.textContent = "Passwords do not match!";
+        }
+    });
+</script>
+
+</body>
+</html>
